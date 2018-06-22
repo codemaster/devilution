@@ -13,3 +13,7 @@ matrix:
       compiler:
       - clang
       - gcc
+    - os: osx
+      compiler:
+      - clang
+      - gcc
