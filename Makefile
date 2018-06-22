@@ -3,7 +3,8 @@ MINGW32 ?= i686-w64-mingw32
 # Used s.t. we can try to use clang to compile code
 _CXX ?= g++
 
-CXX=$(MINGW32)-$(_CXX)
+#CXX=$(MINGW32)-$(_CXX)
+CXX=clang --target=i686-w64-mingw32
 ifeq ($(MINGW32), "mingw32")
 	DLLTOOL=dlltool
 else
@@ -32,13 +33,13 @@ diabloui.lib: diabloui.dll DiabloUI/diabloui_gcc.def
 	$(DLLTOOL) -d DiabloUI/diabloui_gcc.def -D $< -l $@
 
 diabloui.dll:
-	$(error Please copy diabloui.dll (version 1.09b) here)
+	$(warning Please copy diabloui.dll (version 1.09b) here)
 
 storm.lib: storm.dll 3rdParty/Storm/Source/storm_gcc.def
 	$(DLLTOOL) -d 3rdParty/Storm/Source/storm_gcc.def -D $< -l $@
 
 storm.dll:
-	$(error Please copy storm.dll (version 1.09b) here)
+	$(warning Please copy storm.dll (version 1.09b) here)
 
 clean:
 	@$(RM) -v $(OBJS) $(OBJS:.o=.d) $(PKWARE_OBJS)  $(PKWARE_OBJS:.o=d)
