@@ -120,7 +120,7 @@ void __fastcall PrintDebugPlayer(bool bNextPlayer)
 	char dstr[128]; // [esp+Ch] [ebp-80h]
 
 	if ( bNextPlayer )
-		dbgplr = ((_BYTE)dbgplr + 1) & 3;
+		dbgplr = (static_cast<unsigned char>(reinterpret_cast<uintptr_t>(dbgplr + 1) & 3));
 
 	sprintf(dstr, "Plr %i : Active = %i", dbgplr, plr[dbgplr].plractive);
 	NetSendCmdString(1 << myplr, dstr);

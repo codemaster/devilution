@@ -222,7 +222,7 @@ void __fastcall exception_call_stack(void *a1, LPVOID lp)
 		v3 = (void *)v2[1];
 		v4 = v2;
 		v2 = (_DWORD *)*v2;
-		if ( (unsigned char)v2 & 3 )
+		if ( static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v2)) & 3 )
 			break;
 	}
 	while ( v2 > v4 && !IsBadWritePtr(v2, 8u) );

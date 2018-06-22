@@ -1863,11 +1863,11 @@ int __fastcall DRLG_L3SpawnEdge(int x, int y, int *totarea)
 		_LOBYTE(v7) = *v6;
 		if ( *v6 < 0 )
 			return 0;
-		if ( (unsigned char)v7 <= 0xFu )
+		if ( static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v7)) <= 0xFu )
 		{
-			*v6 = (unsigned char)v7 | 0x80;
+			*v6 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v7)) | 0x80;
 			++*totarea;
-			if ( (_BYTE)v7 == 8 )
+			if ( static_cast<_BYTE>(reinterpret_cast<uintptr_t>(v7)) == 8 )
 			{
 				if ( DRLG_L3SpawnEdge(v5 + 1, y, totarea) == 1
 				  || DRLG_L3SpawnEdge(v5 - 1, v4, totarea) == 1
@@ -1881,9 +1881,9 @@ LABEL_24:
 					return 1;
 				return 0;
 			}
-			v7 = (int *)(unsigned char)v7;
+			v7 = (int *)static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v7));
 			totareaa = v7;
-			if ( L3SpawnTbl2[(unsigned char)v7] & 8 )
+			if ( L3SpawnTbl2[static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v7))] & 8 )
 			{
 				if ( DRLG_L3Spawn(v5, y - 1, v3) == 1 )
 					return 1;

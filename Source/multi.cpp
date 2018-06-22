@@ -920,7 +920,7 @@ void __fastcall multi_send_pinfo(int pnum, TCmdPlrInfoHdr *cmd)
 	int v4; // edx
 	PkPlayerStruct pkplr; // [esp+8h] [ebp-4F4h]
 
-	v2 = (char)cmd;
+	v2 = static_cast<char>(reinterpret_cast<uintptr_t>(cmd));
 	v3 = pnum;
 	PackPlayer(&pkplr, myplr, 1);
 	_LOBYTE(v4) = v2;

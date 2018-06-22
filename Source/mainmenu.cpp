@@ -55,10 +55,10 @@ int __stdcall mainmenu_select_hero_dialog(int u1, int u2, int u3, int u4, int mo
 	if ( gbMaxPlayers == 1 )
 	{
 		if ( !UiSelHeroSingDialog(
-				  pfile_ui_set_hero_infos,
-				  pfile_ui_save_create,
-				  pfile_delete_save,
-				  pfile_ui_set_class_stats,
+				  reinterpret_cast<void*>(pfile_ui_set_hero_infos),
+				  reinterpret_cast<void*>(pfile_ui_save_create),
+				  reinterpret_cast<void*>(pfile_delete_save),
+				  reinterpret_cast<void*>(pfile_ui_set_class_stats),
 				  &a5,
 				  chr_name_str,
 				  &gnDifficulty) )
@@ -71,10 +71,10 @@ int __stdcall mainmenu_select_hero_dialog(int u1, int u2, int u3, int u4, int mo
 		dword_5256E8 = 0;
 	}
 	else if ( !UiSelHeroMultDialog(
-				   pfile_ui_set_hero_infos,
-				   pfile_ui_save_create,
-				   pfile_delete_save,
-				   pfile_ui_set_class_stats,
+				   reinterpret_cast<void*>(pfile_ui_set_hero_infos),
+				   reinterpret_cast<void*>(pfile_ui_save_create),
+				   reinterpret_cast<void*>(pfile_delete_save),
+				   reinterpret_cast<void*>(pfile_ui_set_class_stats),
 				   &a5,
 				   &a6,
 				   chr_name_str) )
@@ -118,7 +118,7 @@ void __fastcall mainmenu_action(int option)
 		while ( 1 )
 		{
 			a2 = 0;
-			if ( !UiMainMenuDialog("Diablo v1.09", &a2, effects_play_sound, 30) )
+			if ( !UiMainMenuDialog("Diablo v1.09", &a2, reinterpret_cast<void*>(effects_play_sound), 30) )
 				TermMsg("Unable to display mainmenu");
 			if ( a2 == 1 )
 				break;

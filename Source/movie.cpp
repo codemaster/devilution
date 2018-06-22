@@ -31,7 +31,7 @@ void __fastcall play_movie(char *pszMovie, bool user_can_close)
 	v2 = pszMovie;
 	if ( window_activated )
 	{
-		saveProc = SetWindowProc(MovieWndProc);
+		saveProc = SetWindowProc(reinterpret_cast<void*>(MovieWndProc));
 		InvalidateRect(ghMainWnd, 0, 0);
 		UpdateWindow(ghMainWnd);
 		movie_playing = 1;
@@ -61,7 +61,7 @@ void __fastcall play_movie(char *pszMovie, bool user_can_close)
 			if ( video_stream )
 				SVidPlayEnd(video_stream);
 		}
-		SetWindowProc(saveProc);
+		SetWindowProc(reinterpret_cast<void*>(saveProc));
 		sound_disable_music(0);
 	}
 }

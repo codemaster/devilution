@@ -237,11 +237,11 @@ char __fastcall SyncPlrInv(TSyncHeader *pItem)
 		*(_WORD *)((char *)&pItem->dwItemBuff + 3) = v6->_iCreateInfo;
 		*(_DWORD *)(&pItem->bPInvLoc + 1) = v6->_iSeed;
 		_LOBYTE(v6) = v6->_iIdentified;
-		_HIBYTE(pItem->wPInvCI) = (_BYTE)v6;
+		_HIBYTE(pItem->wPInvCI) = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v6));
 	}
 	if ( ++sgnSyncPInv >= 7 )
 		sgnSyncPInv = 0;
-	return (char)v6;
+	return static_cast<char>(reinterpret_cast<uintptr_t>(v6));
 }
 // 6AAA34: using guessed type int sgnSyncPInv;
 

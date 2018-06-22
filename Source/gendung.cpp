@@ -544,7 +544,7 @@ void __fastcall gendung_4191FB(int a1, int a2)
 	v9 = &level_frame_types[a1];
 	_LOWORD(v6) = *v9;
 	*v9 = *v4;
-	*v4 = (signed short)v6;
+	*v4 = static_cast<signed short>(reinterpret_cast<uintptr_t>(v6));
 	v10 = *v7;
 	*v7 = *(int *)((char *)level_frame_sizes + v2);
 	*(int *)((char *)level_frame_sizes + v2) = v10;

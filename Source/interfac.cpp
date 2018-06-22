@@ -93,7 +93,7 @@ void __fastcall ShowProgress(int uMsg)
 
 	gbSomebodyWonGameKludge = 0;
 	plrmsg_delay(1);
-	saveProc = SetWindowProc(DisableInputWndProc);
+	saveProc = SetWindowProc(reinterpret_cast<void*>(DisableInputWndProc));
 	interface_msg_pump();
 	ClearScreenBuffer();
 	scrollrt_draw_game_screen(1);
@@ -225,7 +225,7 @@ LABEL_41:
 	}
 	PaletteFadeOut(8);
 	FreeInterface();
-	SetWindowProc(saveProc);
+	SetWindowProc((void*)saveProc);
 	NetSendCmdLocParam1(1u, CMD_PLAYER_JOINLEVEL, plr[myplr].WorldX, plr[myplr].WorldY, plr[myplr].plrlevel);
 	plrmsg_delay(0);
 	ResetPal();

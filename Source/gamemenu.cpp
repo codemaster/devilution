@@ -111,7 +111,7 @@ void __cdecl gamemenu_load_game()
 {
 	LRESULT (__stdcall *saveProc)(HWND, UINT, WPARAM, LPARAM); // edi
 
-	saveProc = SetWindowProc(DisableInputWndProc);
+	saveProc = SetWindowProc(reinterpret_cast<void*>(DisableInputWndProc));
 	gamemenu_off();
 	SetCursor(0);
 	InitDiabloMsg(10);
@@ -126,7 +126,7 @@ void __cdecl gamemenu_load_game()
 	PaletteFadeIn(8);
 	SetCursor(CURSOR_HAND);
 	interface_msg_pump();
-	SetWindowProc(saveProc);
+	SetWindowProc(reinterpret_cast<void*>(saveProc));
 }
 // 52571C: using guessed type int drawpanflag;
 
@@ -142,7 +142,7 @@ void __cdecl gamemenu_save_game()
 		}
 		else
 		{
-			saveProc = SetWindowProc(DisableInputWndProc);
+			saveProc = SetWindowProc(reinterpret_cast<void*>(DisableInputWndProc));
 			SetCursor(0);
 			gamemenu_off();
 			InitDiabloMsg(11);
@@ -153,7 +153,7 @@ void __cdecl gamemenu_save_game()
 			drawpanflag = 255;
 			SetCursor(CURSOR_HAND);
 			interface_msg_pump();
-			SetWindowProc(saveProc);
+			SetWindowProc(reinterpret_cast<void*>(saveProc));
 		}
 	}
 }

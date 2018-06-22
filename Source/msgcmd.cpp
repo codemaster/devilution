@@ -136,7 +136,7 @@ bool __fastcall msgcmd_delete_server_cmd_W(ChatCmd *cmd, ServerCommand *extern_m
 		v2 = (char *)cmd->extern_msgs;
 	v3 = (ServerCommand *)*((_DWORD *)v2 + 1);
 	if ( (signed int)v3 > 0 )
-		v4 = (char)v3;
+		v4 = static_cast<char>(reinterpret_cast<uintptr_t>(v3));
 	else
 		v4 = 0;
 	msgcmd_remove_event(ptr, (int)extern_msg);

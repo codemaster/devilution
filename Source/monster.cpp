@@ -9112,7 +9112,7 @@ void __fastcall SpawnGolum(int i, int x, int y, int mi)
 	v9 *= 2;
 	monster[v6]._mmaxhp = v9;
 	monster[v6]._mhitpoints = v9;
-	monster[v6].mHit = 5 * (v10 + 8) + 2 * (_BYTE)v8;
+	monster[v6].mHit = 5 * (v10 + 8) + 2 * static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v8));
 	monster[v6].mMinDamage = 2 * (v10 + 4);
 	monster[v6].mMaxDamage = 2 * (v10 + 8);
 	M_StartSpStand(v4, 0);

@@ -393,7 +393,7 @@ void __fastcall drawTopArchesUpperScreen(void *a1)
 				switch ( v5 )
 				{
 					case 1:
-						world_4B325C = (unsigned char)a1 & 1;
+						world_4B325C = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(a1)) & 1;
 						v18 = 32;
 						do
 						{
@@ -902,7 +902,7 @@ LABEL_67:
 										while ( v67 );
 									}
 								}
-								v1 = (unsigned char)v3 & 2;
+								v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 								v3 += v1;
 							}
 							else
@@ -966,7 +966,7 @@ LABEL_67:
 										while ( v72 );
 									}
 								}
-								v1 = (unsigned char)v3 & 2;
+								v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 								v3 += v1;
 							}
 							v2 = v64 + v2 - 800;
@@ -1042,7 +1042,7 @@ LABEL_67:
 												while ( v79 );
 											}
 										}
-										v1 = (unsigned char)v3 & 2;
+										v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 										v3 += v1;
 									}
 									else
@@ -1106,7 +1106,7 @@ LABEL_67:
 												while ( v84 );
 											}
 										}
-										v1 = (unsigned char)v3 & 2;
+										v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 										v3 += v1;
 									}
 									v2 = v76 + v2 - 800;
@@ -1369,7 +1369,7 @@ LABEL_67:
 										while ( v111 );
 									}
 								}
-								v1 = (unsigned char)v3 & 2;
+								v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 								v3 += v1;
 							}
 							else
@@ -1433,7 +1433,7 @@ LABEL_67:
 										while ( v116 );
 									}
 								}
-								v1 = (unsigned char)v3 & 2;
+								v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 								v3 += v1;
 							}
 							v2 = v108 + v2 - 800;
@@ -2016,7 +2016,7 @@ LABEL_11:
 			}
 			return;
 		}
-		world_4B325C = (unsigned char)a1 & 1;
+		world_4B325C = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(a1)) & 1;
 		v134 = 32;
 LABEL_251:
 		v135 = 32;
@@ -2159,7 +2159,7 @@ LABEL_268:
 	switch ( (_WORD)v11 )
 	{
 		case 1:
-			world_4B325C = (unsigned char)a1 & 1;
+			world_4B325C = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(a1)) & 1;
 			v240 = 32;
 			while ( 1 )
 			{
@@ -2994,7 +2994,7 @@ LABEL_129:
 								--v108;
 							}
 							while ( v108 );
-							v6 += (unsigned char)v6 & 2;
+							v6 += static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v6)) & 2;
 							v2 -= 800;
 							world_4B3269[0] -= 4;
 							v106 = v145 - 1;
@@ -3303,7 +3303,7 @@ LABEL_270:
 									v149 = v50;
 									v51 = *(_DWORD *)world_4B3269[0];
 									v52 = 32;
-									v3 += (unsigned char)v3 & 2;
+									v3 += static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 									do
 									{
 										_EAX = *v3++;
@@ -3381,7 +3381,7 @@ LABEL_270:
 										--v61;
 									}
 									while ( v61 );
-									v3 += (unsigned char)v3 & 2;
+									v3 += static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 									v2 -= 800;
 									world_4B3269[0] -= 4;
 									v59 = v143 - 1;
@@ -4362,7 +4362,7 @@ LABEL_58:
 								v5 += 2;
 								v4 += 2;
 							}
-							v1 = (unsigned char)v5 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v5)) & 2;
 							v5 += v1;
 							v4 = &v4[v45 - 800];
 							v36 = __OFSUB__(v45, 2);
@@ -4401,7 +4401,7 @@ LABEL_58:
 										v5 += 2;
 										v4 += 2;
 									}
-									v1 = (unsigned char)v5 & 2;
+									v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v5)) & 2;
 									v5 += v1;
 									v4 = &v4[v51 - 800];
 									v51 += 2;
@@ -4521,7 +4521,7 @@ LABEL_58:
 								v5 += 2;
 								v4 += 2;
 							}
-							v1 = (unsigned char)v5 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v5)) & 2;
 							v5 += v1;
 							v4 = &v4[v71 - 800];
 							v36 = __OFSUB__(v71, 2);
@@ -5657,7 +5657,7 @@ void __fastcall drawTopArchesLowerScreen(void *a1)
 			}
 			return;
 		}
-		world_4B325C = (unsigned char)a1 & 1;
+		world_4B325C = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(a1)) & 1;
 		v272 = 32;
 LABEL_412:
 		v324 = v272;
@@ -5810,7 +5810,7 @@ LABEL_430:
 		}
 		if ( v5 == 1 )
 		{
-			world_4B325C = (unsigned char)a1 & 1;
+			world_4B325C = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(a1)) & 1;
 			v18 = 32;
 			do
 			{
@@ -6112,7 +6112,7 @@ LABEL_249:
 									while ( v127 );
 								}
 							}
-							v1 = (unsigned char)v3 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 							v3 += v1;
 						}
 						else
@@ -6176,7 +6176,7 @@ LABEL_249:
 									while ( v132 );
 								}
 							}
-							v1 = (unsigned char)v3 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 							v3 += v1;
 						}
 						v2 = v121 + v2 - 800;
@@ -6486,7 +6486,7 @@ LABEL_154:
 									while ( v90 );
 								}
 							}
-							v1 = (unsigned char)v3 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 							v3 += v1;
 						}
 						else
@@ -6550,7 +6550,7 @@ LABEL_154:
 									while ( v95 );
 								}
 							}
-							v1 = (unsigned char)v3 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 							v3 += v1;
 						}
 						v2 = v84 + v2 - 800;
@@ -6632,7 +6632,7 @@ LABEL_154:
 							while ( v75 );
 						}
 					}
-					v1 = (unsigned char)v3 & 2;
+					v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 					v3 += v1;
 				}
 				else
@@ -6696,7 +6696,7 @@ LABEL_154:
 							while ( v80 );
 						}
 					}
-					v1 = (unsigned char)v3 & 2;
+					v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 					v3 += v1;
 				}
 				v2 = v69 + v2 - 800;
@@ -7075,7 +7075,7 @@ LABEL_11:
 			while ( v142 );
 			return;
 		case 9:
-			world_4B325C = (unsigned char)a1 & 1;
+			world_4B325C = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(a1)) & 1;
 			v150 = 32;
 			while ( 1 )
 			{
@@ -8353,7 +8353,7 @@ LABEL_117:
 											--v72;
 										}
 										while ( v72 );
-										v3 += (unsigned char)v3 & 2;
+										v3 += static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v3)) & 2;
 										v70 = v164;
 									}
 									else
@@ -8896,7 +8896,7 @@ LABEL_217:
 								--v130;
 							}
 							while ( v130 );
-							v6 += (unsigned char)v6 & 2;
+							v6 += static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v6)) & 2;
 							v128 = v166;
 						}
 						else
@@ -9791,7 +9791,7 @@ LABEL_116:
 								v5 += 2;
 								v4 += 2;
 							}
-							v1 = (unsigned char)v5 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v5)) & 2;
 							v5 += v1;
 							v4 = &v4[v61 - 800];
 							v31 = __OFSUB__(v61, 2);
@@ -9927,7 +9927,7 @@ LABEL_83:
 								--v45;
 							}
 							while ( v45 );
-							v1 = (unsigned char)v5 & 2;
+							v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v5)) & 2;
 							v5 += v1;
 							v4 = &v4[v42 - 800];
 							v42 += 2;
@@ -9950,7 +9950,7 @@ LABEL_83:
 						--v41;
 					}
 					while ( v41 );
-					v1 = (unsigned char)v5 & 2;
+					v1 = static_cast<unsigned char>(reinterpret_cast<uintptr_t>(v5)) & 2;
 					v5 += v1;
 					v4 = &v4[v38 - 800];
 					v31 = __OFSUB__(v38, 2);
