@@ -1,0 +1,15 @@
+language: cpp
+sudo: false
+
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          packages:
+          - build-essential
+          - mingw-w64
+          - clang
+      compiler:
+      - clang
+      - gcc
