@@ -1,5 +1,6 @@
 language: cpp
 sudo: false
+script: make
 
 matrix:
   include:
@@ -13,11 +14,12 @@ matrix:
       compiler:
       - clang
       - gcc
-      script: make
     - os: osx
       compiler:
       - clang
       - gcc
-      script:
+      before_install:
+      - brew update
+      install:
+      - brew install llvm --with-clang --with-clang-extra-tools
       - brew install mingw-x64
-      - make
