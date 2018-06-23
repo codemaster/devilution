@@ -1,23 +1,54 @@
+MINGW32 ?= i686-w64-mingw32
 ifeq ($(MINGW32), "mingw32")
 	DLLTOOL=dlltool
 else
 	DLLTOOL=$(MINGW32)-dlltool
 endif
 
-CXXFLAGS=-std=c++98 -fpermissive -Wno-write-strings --target=i686-w64-mingw32
+TOOLCHAIN_ARCH = $(firstword $(subst -, ,$(MINGW32)))
+UNAME_S := $(shell uname -s)
+
+CXXFLAGS=-std=c++98 -fpermissive -Wno-write-strings
 CPPFLAGS=-MMD -MF $*.d
 LDLIBS=-lgdi32 -lversion -ldiabloui -lstorm
 LDFLAGS=-L./
 
-ifneq ($(OS),Windows_NT)
-    UNAME_S := $(shell uname -s)
-    ifeq ($(UNAME_S),Linux)
-	CXXFLAGS += -I /usr/i686-w64-mingw32/include/
-    endif
-    ifeq ($(UNAME_S),Darwin)
-	MINGW_VERSION := $(shell brew list --versions mingw-w64)
-	CXXFLAGS += -I $(shell brew --cellar mingw-w64)/$(subst mingw-w64 ,,$(MINGW_VERSION))/toolchain-i686/i686-w64-mingw32/include/ 
-    endif
+# Determine compiler
+ifneq ($(CC),)
+	# If using generic 'cc', expose the symlink
+	ifeq ($(findstring cc,$(CC)),cc)
+		ifeq ($(UNAME_S),Darwin)
+			CC = $(shell readlink /usr/bin/cc)
+		else
+			CC = $(shell readlink -f /usr/bin/cc)
+		endif
+	endif
+
+	# If clang
+	ifeq ($(findstring clang,$(CC)),clang)
+		CXXFLAGS += --target=$(MINGW32)
+		ifeq ($(UNAME_S),Darwin)
+			MINGW_VERSION := $(shell brew list --versions mingw-w64)
+			CXXFLAGS += -I$(shell brew --cellar mingw-w64)/$(subst mingw-w64 ,,$(MINGW_VERSION))/toolchain-$(TOOLCHAIN_ARCH)/$(MINGW32)/include/
+			LDFLAGS += -L$(shell brew --cellar mingw-w64)/$(subst mingw-w64 ,,$(MINGW_VERSION))/toolchain-$(TOOLCHAIN_ARCH)/$(MINGW32)/lib/
+		endif
+	# If GCC/G++
+	else ifeq ($(findstring gcc,$(CC)),gcc)
+		CXX := $(MINGW32)-g++
+		CC := $(MINGW32)-($CC)
+	endif
+else
+	# Undefined - use OS defaults
+	ifeq ($(UNAME_S),Linux)
+		CXX := $(MINGW32)-g++
+		CXX := $(MINGW32)-gcc
+	endif
+	ifeq ($(UNAME_S),Darwin)
+		MINGW_VERSION := $(shell brew list --versions mingw-w64)\
+		CXXFLAGS += -I$(shell brew --cellar mingw-w64)/$(subst mingw-w64 ,,$(MINGW_VERSION))/toolchain-$(TOOLCHAIN_ARCH)/$(MINGW32)/include/
+		LDFLAGS += -L$(shell brew --cellar mingw-w64)/$(subst mingw-w64 ,,$(MINGW_VERSION))/toolchain-$(TOOLCHAIN_ARCH)/$(MINGW32)/lib/
+		CXXFLAGS += --target=$(MINGW32)
+	endif
 endif
 
 all: devilution.exe
