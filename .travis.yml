@@ -1,6 +1,6 @@
 language: cpp
 sudo: false
-script: make
+script: make -j
 
 matrix:
   include:
